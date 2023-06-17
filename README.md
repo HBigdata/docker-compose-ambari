@@ -1,9 +1,9 @@
-@[TOC]
 ## 一、概述
 `Apache Ambari` **是 Hortonworks 贡献给Apache开源社区的顶级项目，它是一个基于web的工具，用于安装、配置、管理和监视 Hadoop 集群。** Ambari 目前已支持大多数 Hadoop 组件，包括 HDFS、MapReduce、Hive、Pig、 Hbase、Zookeper、Sqoop 和 Hcatalog 等。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/98b4d0f977744039ad51391fa500a605.png)
-想了解更多 Apache Ambari 可以阅读我这篇文章：【大数据】大数据 Hadoop 管理工具 Apache Ambari（HDP）
+![输入图片说明](images/1.png)
+
+想了解更多 Apache Ambari 可以阅读我这篇文章：[【大数据】大数据 Hadoop 管理工具 Apache Ambari（HDP）](https://mp.weixin.qq.com/s?__biz=MzI3MDM5NjgwNg==&mid=2247488159&idx=1&sn=c3528f233851ba5fb0afc297786e63c1&chksm=ead0ee76dda767609fa54dbdc576b3ddefcb32a910f20c0e0f8f93b8a122ab1c073db375b307#rd)
 
 ## 二、前期准备
 ### 1）部署 docker
@@ -296,15 +296,20 @@ docker-compose -f docker-compose.yaml down
 ### 10）检测
 登录web：`http://ip:8080`
 默认账号/密码：`admin/admin`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2c492be6e81642e386706b47899113fe.png)
+
+![输入图片说明](images/2.png)
+
 ## 五、通过 Apache Ambari 安装 Hadoop 组件
 ### 1）Cluster Information
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0481eaabe1fa46a6ad805c688bb53196.png)
+![输入图片说明](images/3.png)
+
 ### 2）Get Started
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1fd99794ed9a46fa86c0008ba4c70546.png)
+
+![输入图片说明](images/4.png)
 ### 3）Select Version
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2043a7da6135406fa317747e9831c230.png)
+
+![输入图片说明](images/5.png)
 
 ```bash
 http://httpd:18080/HDP/centos7/3.1.5.0-152/
@@ -317,7 +322,8 @@ http://httpd:18080/HDP-UTILS/centos7/1.1.0.22/
 ```bash
 docker exec -it ambari-server cat  ~/.ssh/id_rsa
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0bbeee6610ee473da8711ff65977b373.png)
+
+![输入图片说明](images/6.png)
 ### 5）Confirm Hosts（安装 ambari-agent）
 #### 1、配置互相（容器到目标主机）
 
@@ -338,7 +344,7 @@ scp /etc/yum.repos.d/ambari.repo 192.168.182.111:/etc/yum.repos.d/
 192.168.182.110 httpd
 ```
 #### 3、开始安装 ambari-agent
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9f9c59aaa4104bcf86115392e2a8bd33.png)
+![输入图片说明](images/7.png)
 查看日志
 
 ```bash
@@ -350,7 +356,7 @@ tail -200f /var/log/ambari-agent/ambari-agent.log
 vi /etc/ambari-agent/conf/ambari-agent.ini
 ```
 安装完成
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3048756a926340dfb10f602209bd7c18.png)
+![输入图片说明](images/8.png)
 #### 4、安装 JDK（安装大数据组件需要）
 官网下载：[https://www.oracle.com/java/technologies/downloads/](https://www.oracle.com/java/technologies/downloads/)
 
@@ -368,25 +374,25 @@ export PATH=$JAVA_HOME/bin:$PATH
 ```
 
 ### 6）Choose Services（选择所需安装的大数据组件）
-![在这里插入图片描述](https://img-blog.csdnimg.cn/852ae8ea917446c3b9102ef4a2cd6465.png)
+![输入图片说明](images/9.png)
 ### 7）Assign Masters
-![在这里插入图片描述](https://img-blog.csdnimg.cn/907fcfe7f9b64fc581d2680217c18f76.png)
+![输入图片说明](images/10.png)
 ### 8）Assign Slaves and Clients
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0f2c97569ade48218bbd00f433ddca3b.png)
+![输入图片说明](images/11.png)
 ### 9）Customize Services
-![在这里插入图片描述](https://img-blog.csdnimg.cn/008ff6da52fa43b990a79e5044e48696.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/14c8559d72d94e5a8abd533d8cc077b3.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d802fd18134e48748a1378204de66fce.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6a725df5f3f446b0b2d0024b860ed24e.png)
+![输入图片说明](images/12.png)
+![输入图片说明](images/13.png)
+![输入图片说明](images/14.png)
+![输入图片说明](images/15.png)
 ### 10）Review
-![在这里插入图片描述](https://img-blog.csdnimg.cn/10876dc985634ce08e6d69f717227363.png)
+![输入图片说明](images/16.png)
 ### 11）Install, Start and Test
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c1f02e8f56074ea78c12132d8bf35357.png)
+![输入图片说明](images/17.png)
 安装完成
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ef4a562501274786ba5cda41727d7266.png)
+![输入图片说明](images/18.png)
 ### 12）Summary
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f83b0e7cf5724dd4a1fad4dae2b3914b.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/32820905aae7476789154ea4dddff5ff.png)
+![输入图片说明](images/19.png)
+![输入图片说明](images/20.png)
 
 到此通过 docker-compose 快速部署 Apache Ambari 保姆级教程就结束了，安装包获取可关注我公众号：`大数据与云原生技术分享` ，在公众号里回复 `dca` 即可获取下载链接。有任何疑问欢迎给我留言或私信~
 
