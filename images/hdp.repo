@@ -1,0 +1,16 @@
+#VERSION_NUMBER=3.1.5.0-152
+[HDP-3.1.5.0]
+name=HDP Version - HDP-3.1.5.0
+baseurl=http://httpd:18080/HDP/centos7/3.1.5.0-152/
+gpgcheck=1
+gpgkey=http://httpd:18080/HDP/centos7/3.1.5.0-152/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+[HDP-UTILS-1.1.0.22]
+name=Hortonworks Data Platform Utils Version - HDP-UTILS-1.1.0.22
+baseurl=http://httpd:18080/HDP-UTILS/centos7/1.1.0.22/
+gpgcheck=1
+gpgkey=http://httpd:18080/HDP-UTILS/centos7/1.1.0.22/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1

@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mysql-test:
+    image: registry.cn-hangzhou.aliyuncs.com/bigdata_cloudnative/mysql-test:5.7
+    restart: always
+    container_name: mysql-test
+    hostname: mysql-test
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      TZ: Asia/Shanghai
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./conf/my.cnf:/etc/mysql/my.cnf
+    command:
+      --max_connections=1000
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --default-authentication-plugin=mysql_native_password
+    networks:
+      - hadoop-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent localhost:3306 >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+
+# 连接外部网络
+networks:
+  hadoop-network:
+    external: true

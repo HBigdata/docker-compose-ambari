@@ -1,0 +1,18 @@
+version: '3'
+services:
+  httpd:
+    container_name: httpd
+    hostname: httpd
+    image: registry.cn-hangzhou.aliyuncs.com/bigdata_cloudnative/httpd:latest
+    ports:
+      - "18080:80"
+    privileged: true
+    networks:
+      - hadoop-network
+    restart: always #重启docker时，自动启动相关容器
+    volumes:
+      - "./packages/ambari/:/usr/local/apache2/htdocs/"
+# 连接外部网络
+networks:
+  hadoop-network:
+    external: true
