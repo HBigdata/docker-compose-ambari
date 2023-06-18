@@ -325,7 +325,7 @@ docker exec -it ambari-server cat  ~/.ssh/id_rsa
 
 ![输入图片说明](images/6.png)
 ### 5）Confirm Hosts（安装 ambari-agent）
-#### 1、配置互相（容器到目标主机）
+#### 1、配置互信（容器到目标主机）
 
 ```bash
 # 获取ssh公钥
@@ -335,7 +335,7 @@ docker exec -it ambari-server cat  ~/.ssh/id_rsa.pub
 
 ```bash
 scp /etc/yum.repos.d/hdp.repo 192.168.182.111:/etc/yum.repos.d/
-scp /etc/yum.repos.d/ambari.repo 192.168.182.111:/etc/yum.repos.d/
+scp /etc/yum.repos.d/ambari.repo 192.168.182.112:/etc/yum.repos.d/
 ```
 #### 3、配置hosts
 
